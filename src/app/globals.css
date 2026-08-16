@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #030810;
+  --color-panel: #071019;
+  --color-gold: #d5a74d;
+  --color-gold-light: #f2d394;
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+}
+
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: #030810; }
+body { margin: 0; background: #030810; font-family: var(--font-body), sans-serif; }
+.font-display { font-family: var(--font-display), serif; }
+.bg-ink { background-color: #030810; }
+.bg-panel { background-color: #071019; }
+.text-gold-gradient {
+  background: linear-gradient(180deg, #fff3cc 0%, #d5a74d 48%, #8e5c1c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+::selection { background: rgba(213, 167, 77, .35); color: white; }
