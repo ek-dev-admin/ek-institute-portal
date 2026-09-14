@@ -34,7 +34,7 @@ export async function getCurrentUser(): Promise<AuthUser | null> {
   }
 
   try {
-    const user = await serverApiRequest<AuthUser>("/auth/me");
+    const user = await serverApiRequest<AuthUser>("/users/me");
     return user;
   } catch {
     return null;

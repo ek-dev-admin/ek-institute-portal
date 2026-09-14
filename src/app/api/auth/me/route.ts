@@ -14,7 +14,7 @@ export async function GET() {
   }
 
   try {
-    const response = await fetch(`${serverEnv.BACKEND_API_URL}/auth/me`, {
+    const response = await fetch(`${serverEnv.BACKEND_API_URL}/users/me`, {
       headers: {
         Accept: "application/json",
         Authorization: `Bearer ${accessToken}`,

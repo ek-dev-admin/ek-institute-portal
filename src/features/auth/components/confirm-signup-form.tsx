@@ -159,7 +159,7 @@ export function ConfirmSignupForm({
         )}
 
         <div className="mt-2 text-center text-sm text-white/60">
-          Didn't receive the code?{" "}
+          Didn&apos;t receive the code?{" "}
           <button
             type="button"
             onClick={handleResendCode}

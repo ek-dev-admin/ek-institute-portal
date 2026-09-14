@@ -1,9 +1,30 @@
 export type AuthUser = {
   id: string;
+  cognitoSub?: string;
   email: string;
   firstName?: string;
   lastName?: string;
   roles?: string[];
+  role?: string;
+  status?: string;
+  companyName?: string;
+  memberType?: string;
+  createdAt?: string;
+};
+
+export type DocumentType =
+  | "id_passport"
+  | "proof_of_address"
+  | "business_registration"
+  | "other";
+
+export type UserDocument = {
+  id: string;
+  documentType: DocumentType;
+  confirmed: boolean;
+  contentType?: string;
+  sizeBytes?: number;
+  createdAt: string;
 };
 
 export type LoginRequest = {

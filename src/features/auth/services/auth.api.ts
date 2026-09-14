@@ -10,7 +10,6 @@ import type { ConfirmSignupInput } from "../schemas/signup.schema";
 import type { LoginInput } from "../schemas/login.schema";
 import type { SignupRequest } from "../schemas/signup.schema";
 import type { ForgotPasswordInput } from "../schemas/forgot-password.schema";
-import type { ResetPasswordInput } from "../schemas/reset-password.schema";
 
 export async function login(input: LoginInput) {
   return apiRequest<{ user: LoginResponse["user"] }>("/api/auth/login", {

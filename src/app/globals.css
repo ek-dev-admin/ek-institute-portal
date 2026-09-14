@@ -23,3 +23,10 @@ body { margin: 0; background: #030810; font-family: var(--font-body), sans-serif
   color: transparent;
 }
 ::selection { background: rgba(213, 167, 77, .35); color: white; }
+
+/* Reject/suspend confirmation: use red text and icon without a red message box. */
+.bg-red-400\/10 { background-color: transparent !important; }
+.bg-red-400\/10 + div h2 { color: #fca5a5; }
+.bg-red-500,
+.bg-red-500:hover,
+.hover\:bg-red-400:hover { background-color: transparent !important; color: #fca5a5 !important; }
