@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { Camera, CheckCircle2, Clock3, ShieldAlert, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { AuthUser } from "@/types/api";
@@ -95,7 +96,7 @@ export function ProfileView({ user }: ProfileViewProps) {
       <section className="mt-10 overflow-hidden rounded-2xl border border-gold/20 bg-black/40">
         <div className="flex items-center gap-5 border-b border-white/10 bg-white/[0.03] px-6 py-6 sm:px-8">
           <button type="button" disabled={avatarBusy} onClick={() => fileInputRef.current?.click()} className="group relative flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full border border-gold/40 bg-gold/10 font-display text-xl text-gold disabled:opacity-60" aria-label="Choose profile photo">
-            {avatar ? <img src={avatar} alt="" className="h-full w-full object-cover" /> : initials(user)}
+            {avatar ? <Image src={avatar} alt="" width={160} height={160} unoptimized className="h-full w-full object-cover" /> : initials(user)}
             <span className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition group-hover:opacity-100"><Camera className="h-5 w-5 text-white" /></span>
           </button>
 

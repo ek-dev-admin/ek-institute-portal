@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element -- avatar URLs are short-lived presigned S3 URLs. */
+
 import { useEffect, useState } from "react";
 import { Check, ChevronDown, Clock3, ShieldCheck, UserRound, X, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -26,6 +28,8 @@ export function AdminPanel() {
     setLoading(false);
   }
 
+  // The initial fetch synchronizes this client component with the admin API.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { void loadUsers(); }, []);
 
   async function applyUpdate(user: AuthUser, field: "status" | "role", value: string) {
