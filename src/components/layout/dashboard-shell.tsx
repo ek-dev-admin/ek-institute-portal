@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { ShieldCheck } from "lucide-react";
 
 import { LogoutButton } from "@/features/auth/components/logout-button";
 import type { AuthUser } from "@/types/api";
@@ -10,8 +11,11 @@ type DashboardShellProps = {
 };
 
 export function DashboardShell({ user, children }: DashboardShellProps) {
-  const displayName =
-    [user.firstName, user.lastName].filter(Boolean).join(" ") || user.email;
+  const displayName = user.firstName || user.email;
+  const verified = user.status === "active" || user.status === "approved";
+  const attention = user.status === "rejected" || user.status === "suspended";
+  const statusLabel = verified ? "Verified" : attention ? (user.status === "rejected" ? "Rejected" : "Suspended") : "Pending verification";
+  const statusColor = verified ? "text-emerald-300" : attention ? "text-red-300" : "text-amber-300";
 
   return (
     <div className="min-h-screen bg-ink text-white">
@@ -51,7 +55,12 @@ export function DashboardShell({ user, children }: DashboardShellProps) {
               href="/dashboard/profile"
               className="hidden text-sm text-white/60 transition hover:text-gold sm:inline"
             >
-              {displayName}
+              <span className="inline-flex items-center gap-2">
+                {displayName}
+                <span className={statusColor} title={statusLabel} aria-label={statusLabel}>
+                  <ShieldCheck className="h-4 w-4" />
+                </span>
+              </span>
             </Link>
 
             <LogoutButton />

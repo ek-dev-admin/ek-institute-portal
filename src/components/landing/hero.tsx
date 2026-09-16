@@ -5,14 +5,14 @@ import { Button } from "@/components/ui/button";
 export function Hero() {
   return (
     <section className="relative flex min-h-[920px] items-center justify-center pt-28">
-      <Image src="/images/hero-bg.png" alt="Earth from space" fill priority className="object-cover object-center opacity-65" />
+      <Image src="/images/hero-bg.png" alt="Earth from space" fill priority sizes="100vw" className="object-cover object-center opacity-65" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,transparent_0%,rgba(1,7,14,.2)_38%,rgba(1,7,14,.96)_88%)]" />
       <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-ink to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-5xl px-5 text-center">
         <div className="relative mx-auto mb-4 h-72 w-72 sm:h-96 sm:w-96">
           <div className="absolute inset-6 rounded-full border border-gold/65 shadow-[0_0_70px_rgba(213,167,77,.18)]" />
-          <Image src="/images/hero-logo.png" alt="Executive Cooperation emblem" fill className="object-contain" priority />
+          <Image src="/images/hero-logo.png" alt="Executive Cooperation emblem" fill sizes="(min-width: 640px) 384px, 288px" className="object-contain" priority />
         </div>
 
         <p className="mb-3 font-display text-sm uppercase tracking-[0.42em] text-gold">Executive Cooperation</p>

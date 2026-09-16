@@ -15,8 +15,8 @@ export function Introduction() {
           </p>
           <Button href="/login" variant="outline" className="mt-8">Join the founding network <ArrowRight size={17} /></Button>
         </div>
-        <div className="relative min-h-[420px] overflow-hidden rounded-2xl">
-          <Image src="/images/global-city.png" alt="Connected global city" fill className="object-cover" />
+        <div className="relative min-h-[420px] overflow-hidden rounded-2xl border border-gold/35 shadow-[0_0_0_1px_rgba(213,167,77,0.08),0_20px_60px_rgba(0,0,0,0.35)]">
+          <Image src="/images/global-city.png" alt="Connected global city" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent" />
         </div>
       </div>

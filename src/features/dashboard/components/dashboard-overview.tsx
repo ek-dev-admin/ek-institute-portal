@@ -15,6 +15,7 @@ const documentLabels: Record<UserDocument["documentType"], string> = {
   business_registration: "Business",
   other: "Other",
 };
+const requiredDocumentTypes: UserDocument["documentType"][] = ["id_passport", "proof_of_address", "business_registration"];
 
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("en", { month: "short", day: "numeric" }).format(new Date(value));
@@ -34,7 +35,9 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
 
   const confirmedCount = documents.filter((document) => document.confirmed).length;
   const profileProgress = Math.round((getProfileProgress(user) / 5) * 100);
-  const onboardingProgress = Math.min(100, Math.round(((profileProgress + (confirmedCount > 0 ? 25 : 0)) / 125) * 100));
+  const uploadedDocumentTypes = new Set(documents.map((document) => document.documentType));
+  const uploadedRequiredTypes = requiredDocumentTypes.filter((type) => uploadedDocumentTypes.has(type)).length;
+  const onboardingProgress = Math.round((uploadedRequiredTypes / requiredDocumentTypes.length) * 100);
   const recentDocuments = documents.slice(0, 4);
 
   const activityBars = useMemo(() => {
@@ -79,7 +82,7 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
         <div className="rounded-2xl border border-white/10 bg-panel p-6 sm:p-7">
           <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">Next milestone</p><h2 className="mt-2 font-display text-2xl text-white">Complete your profile</h2>
           <div className="mt-7 h-2 overflow-hidden rounded-full bg-white/10"><div className="h-full rounded-full bg-gold" style={{ width: `${onboardingProgress}%` }} /></div><div className="mt-3 flex justify-between text-xs text-white/45"><span>Onboarding progress</span><span>{onboardingProgress}%</span></div>
-          <p className="mt-7 text-sm leading-6 text-white/55">A complete profile and verified documents help us prepare your membership review.</p><Button href="/dashboard/profile" className="mt-6 w-full">Continue setup</Button>
+          <p className="mt-7 text-sm leading-6 text-white/55">Upload at least one identity, address, and business document to complete your document profile.</p><Button href="/dashboard/profile" className="mt-6 w-full">Continue setup</Button>
         </div>
       </section>
 
